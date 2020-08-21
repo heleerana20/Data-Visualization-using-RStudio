@@ -1,0 +1,61 @@
+---
+title: "Data Visualization in RStudio"
+author: "Helee Rana"
+date: "8/20/2020"
+output: word_document
+---
+
+```{r}
+require(tidyverse)
+```
+
+```{r}
+
+require(gapminder)
+```
+```{r}
+names(gapminder)
+```
+
+```{r}
+ggplot(gapminder, aes(x=lifeExp, y=gdpPercap)) +geom_point()
+
+gapminder %>% ggplot(aes(x=lifeExp, y=gdpPercap)) +geom_point()
+```
+
+
+```{r}
+gapminder %>% ggplot(aes(x=pop, y=lifeExp)) +geom_point()
+
+```
+
+```{r}
+
+gapminder%>%filter(continent=='Africa') %>%ggplot(aes(x=pop, y=lifeExp)) +geom_point()
+```
+
+```{r}
+
+gapminder%>%ggplot(aes(x=pop, y=lifeExp, color=continent))+geom_point() +theme_classic()
+```
+
+```{r}
+gapminder%>%ggplot(aes(x=pop, y=lifeExp, color=year))+geom_point() +theme_classic()
+gapminder%>%ggplot(aes(x=pop, y=lifeExp, color=as.factor(year)))+geom_point() +theme_classic()
+
+```
+
+```{r}
+
+gapminder%>%ggplot(aes(x=pop, y=lifeExp, alpha=gdpPercap))+geom_point() +theme_classic()
+```
+
+```{r}
+gapminder%>%ggplot(aes(x=pop, y=lifeExp, color=country)) + geom_point()
+```
+
+```{r}
+gapminder%>%ggplot(aes(x=lifeExp, y=gdpPercap, color=continent)) + geom_point()
+gapminder%>%ggplot(aes(x=lifeExp, y=gdpPercap)) + geom_point(color='red')
+
+```
